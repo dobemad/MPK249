@@ -7,13 +7,15 @@ _Disclaimer:_ Use of this material can possibly void your warranty, corrupt your
 
 ### Pre-requisites
 For the GUI:
-Install customtkinter (if not already installed)
+Install customtkinter (if not already installed) pillow and python-rtmidi
 ```sh
 pip install customtkinter pillow python-rtmidi
 ```
-Akai media images (for the gui)
+Download Akai media images (for the gui)
 
 https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
+
+And extract MPK249_ortho_10x8_media_01.jpg
 
 ### Works that made this possible
 
@@ -26,13 +28,13 @@ http://practicalusage.com/akai-mpk261-one-more-thing/
 http://www.akaipro.com/files/product_downloads/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
 ## Runnin the GUI
-Place this 2 files in the same directory
+Place this 3 files in the same directory
 
 mpk249_gui.py
 
 mpk2_preset.py
 
-Rename MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg
+Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg
 
 
 Then run:
@@ -73,11 +75,13 @@ For midi support try edit port configurations mpk249_gui.py
 self.MIDI_IN_GET_NAME = "MIDIIN4 (MPK249)"
 self.MIDI_OUT_SEND_NAME = "MIDIOUT4 (MPK249)"
 ```
-with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK269)" )
+with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" )
 
 ## Command-line scripts usage
 To use the command line scripts in the scripts folder, you will need to already have a SINGLE preset dump file (.syx)
 (do not use the "ALL" preset dump).
+
+All scripts have a --debug option so you read the actual dump bytes the script is reading / referring to
 
 ### Sample usage:
 ### Faders script
@@ -101,4 +105,7 @@ python .\mpk2_fader_editor.py --import PRESET_FILE.syx  --set-fader 1 MIDI_CC 19
 python mpk2_switch_daw_editor.py --import PRESET_FILE.syx --list-switches
 #### Set Values (set switch 1 channel to USBA1)
 Python mpk2_switch_daw_editor.py --import PRESET_FILE.syx --set-switch 1 --type CC --channel USBA1 --export PRESET_FILE_NEW.syx
+
+### Other scripts
+see command line help
 
