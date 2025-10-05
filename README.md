@@ -71,8 +71,8 @@ self.MIDI_OUT_SEND_NAME = "MIDIOUT4 (MPK249)"
 ```
 with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK269)" )
 
-## Command-line Scripts Usage
-To use the command line scripts you will need to already have a SINGLE preset dump file (.syx)
+## Command-line scripts usage
+To use the command line scripts in the scripts folder, you will need to already have a SINGLE preset dump file (.syx)
 (do not use the "ALL" preset dump).
 
 ### Faders script
