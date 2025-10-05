@@ -79,6 +79,7 @@ with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK26
 To use the command line scripts in the scripts folder, you will need to already have a SINGLE preset dump file (.syx)
 (do not use the "ALL" preset dump).
 
+### Sample usage:
 ### Faders script
 
 #### List values
@@ -92,12 +93,12 @@ Fader  2 | Type=MIDI_CC    CC= 21 Ch= 0 Min=  0 Max=127 Din=Off
 
 Fader  3 | Type=MIDI_CC    CC= 22 Ch= 0 Min=  0 Max=127 Din=Off
 
-#### Set Value (set Fader 1 CC to 19)
+#### Set Values (set Fader 1 CC to 19)
 python .\mpk2_fader_editor.py --import PRESET_FILE.syx  --set-fader 1 MIDI_CC 19 0 0 127 Off --export PRESET_FILE_NEW.syx
 
 ### Switches/Daw Buttons script
-# List values
+#### List values
 python mpk2_switch_daw_editor.py --import PRESET_FILE.syx --list-switches
-# Set Values (set switch 1 channel to USBA1)
+#### Set Values (set switch 1 channel to USBA1)
 Python mpk2_switch_daw_editor.py --import PRESET_FILE.syx --set-switch 1 --type CC --channel USBA1 --export PRESET_FILE_NEW.syx
 
