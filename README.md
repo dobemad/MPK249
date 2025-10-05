@@ -25,7 +25,7 @@ http://practicalusage.com/akai-mpk261-one-more-thing/
 
 http://www.akaipro.com/files/product_downloads/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
-## The GUI
+## GUI Installation
 Place this 2 files in the same directory
 
 mpk249_gui.py
