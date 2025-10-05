@@ -11,6 +11,10 @@ Install customtkinter (if not already installed)
 ```sh
 pip install customtkinter pillow python-rtmidi
 ```
+Akai media images (for the gui)
+
+https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
+
 ### Works that made this possible
 
 https://github.com/nsmith-/mpk2
@@ -22,13 +26,13 @@ http://practicalusage.com/akai-mpk261-one-more-thing/
 http://www.akaipro.com/files/product_downloads/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
 ## The GUI
-Place this 3 files in the same directory
+Place this 2 files in the same directory
 
 mpk249_gui.py
 
-keyboard.jpg
-
 mpk2_preset.py
+
+Rename MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg
 
 
 Then run:
