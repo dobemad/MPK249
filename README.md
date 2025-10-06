@@ -25,7 +25,7 @@ http://practicalusage.com/akai-mpk261-mpk2-series-controlling-the-controller-wit
 
 http://practicalusage.com/akai-mpk261-one-more-thing/
 
-http://www.akaipro.com/files/product_downloads/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
+https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
 ## Runnin the GUI
 Place this 3 files in the same directory
