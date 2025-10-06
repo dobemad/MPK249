@@ -87,8 +87,9 @@ All scripts have a --debug option so you read the actual dump bytes the script i
 ### Faders script
 
 #### List values
+```sh
 python mpk2_fader_editor.py --import PRESET_FILE.syx --list-faders
-
+```
 Sample Output:
 
 Fader  1 | Type=MIDI_CC    CC= 18 Ch= 0 Min=  0 Max=127 Din=Off
@@ -98,14 +99,18 @@ Fader  2 | Type=MIDI_CC    CC= 21 Ch= 0 Min=  0 Max=127 Din=Off
 Fader  3 | Type=MIDI_CC    CC= 22 Ch= 0 Min=  0 Max=127 Din=Off
 
 #### Set Values (set Fader 1 CC to 19)
-python .\mpk2_fader_editor.py --import PRESET_FILE.syx  --set-fader 1 MIDI_CC 19 0 0 127 Off --export PRESET_FILE_NEW.syx
-
+```sh
+python mpk2_fader_editor.py --import PRESET_FILE.syx  --set-fader 1 MIDI_CC 19 0 0 127 Off --export PRESET_FILE_NEW.syx
+```
 ### Switches/Daw Buttons script
 #### List values
+```sh
 python mpk2_switch_daw_editor.py --import PRESET_FILE.syx --list-switches
+```
 #### Set Values (set switch 1 channel to USBA1)
+```sh
 Python mpk2_switch_daw_editor.py --import PRESET_FILE.syx --set-switch 1 --type CC --channel USBA1 --export PRESET_FILE_NEW.syx
-
+```
 ### Other scripts
 see command line help
 
