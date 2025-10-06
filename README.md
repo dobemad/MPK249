@@ -42,6 +42,8 @@ Then run:
 ```sh
 python akai_gui.py
 ```
+#### The actual interface
+![screenshot](https://github.com/dobemad/MPK249/blob/main/gui-interface.png)
 
 #### Features:
 Get Presets from Keyboard
