@@ -42,6 +42,23 @@ Then run:
 ```sh
 python akai_gui.py
 ```
+to start the visual editor. 
+
+To load a preset click 'Get Presets from Keyboard'
+
+Go to your keyboad global settings --> Sysex --> Send program
+
+Pick the preset number you want to edit (do not use the 'All' option)
+and push the enter knob to send the preset sysex dump to the editor.
+
+Make your changes and then click the 'Sent to Keyboard' button.
+
+You can also save presets to your computer.
+
+Done!
+
+
+
 #### The actual interface
 ![screenshot](https://github.com/dobemad/MPK249/blob/main/gui-interface.png)
 
