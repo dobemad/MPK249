@@ -23,7 +23,8 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
 
 And extract MPK249_ortho_10x8_media_01.jpg
 
-### Works that made this possible
+### Works that made this possible:
+These guys are the real heroes:
 
 https://github.com/nsmith-/mpk2
 
