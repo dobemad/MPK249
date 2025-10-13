@@ -11,7 +11,7 @@ If you are not familiar with setting up a python environment
 you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
 (sorry Apple users)
 
-### Pre-requisites
+### Pre-requisites for running the source code:
 For the GUI:
 Install customtkinter (if not already installed) pillow and python-rtmidi
 ```sh
@@ -50,6 +50,8 @@ Then run:
 python akai_gui.py
 ```
 to start the visual editor. 
+
+### Usage
 
 To load a preset click 'Get Presets from Keyboard'
 
