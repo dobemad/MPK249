@@ -28,6 +28,11 @@ http://practicalusage.com/akai-mpk261-one-more-thing/
 https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
 ## Running the GUI
+
+If you are not a developer you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
+
+(sorry Apple users)
+
 Place this 3 files in the same directory
 
 mpk249_gui.py
