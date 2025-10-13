@@ -27,7 +27,7 @@ http://practicalusage.com/akai-mpk261-one-more-thing/
 
 https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
-## Runnin the GUI
+## Running the GUI
 Place this 3 files in the same directory
 
 mpk249_gui.py
@@ -89,14 +89,16 @@ Pitchebend / Modwheel
 
 #### Usage with other MPK2 series keyboards (untested)
 
-For midi support try edit port configurations mpk249_gui.py
+For midi support try edit port configurations in the mpk249_gui.py file
 ```sh
 self.MIDI_IN_GET_NAME = "MIDIIN4 (MPK249)"
 self.MIDI_OUT_SEND_NAME = "MIDIOUT4 (MPK249)"
 ```
-with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" )
+with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" - "MIDIOUT4 (MPK261)" )
 
 ## Command-line scripts usage
+The command line scripts are my first attempt to configure the keyboard. You do not need those if you are using the visual editor.
+I publish those if you are interested in developing your own tools or visual gui.
 To use the command line scripts in the scripts folder, you will need to already have a SINGLE preset dump file (.syx)
 (do not use the "ALL" preset dump).
 
