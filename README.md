@@ -5,6 +5,12 @@ Scripts are a collection of command line tools for reading / writing single pres
 
 _Disclaimer:_ Use of this material can possibly void your warranty, corrupt your presets or brick your controller.
 
+## Downloads
+If you are not familiar with setting up a python environment 
+
+you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
+(sorry Apple users)
+
 ### Pre-requisites
 For the GUI:
 Install customtkinter (if not already installed) pillow and python-rtmidi
@@ -27,11 +33,7 @@ http://practicalusage.com/akai-mpk261-one-more-thing/
 
 https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
-## Running the GUI
-
-If you are not a developer you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
-
-(sorry Apple users)
+## Running the GUI in python
 
 Place this 3 files in the same directory
 
