@@ -60,7 +60,7 @@ Go to your keyboad global settings --> Sysex --> Send program
 Pick the preset number you want to edit (do not use the 'All' option)
 and push the enter knob to send the preset sysex dump to the editor.
 
-Make your changes and then click the 'Sent to Keyboard' button.
+Make your changes and then click the 'Send to Keyboard' button.
 
 You can also save presets to your computer.
 
