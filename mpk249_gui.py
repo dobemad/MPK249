@@ -263,6 +263,9 @@ class ControlEditor(ctk.CTkToplevel):
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
+        self.geometry("1200x800")     # dimensione iniziale
+        self.minsize(800, 600)        # impedisce che diventi minuscola
+        self.resizable(True, True)    # abilita il ridimensionamento
         self.title("AKAI MPK249 Visual Preset Editor")
         self.preset = MPK2Preset()
         self.current_control_bank = 0
