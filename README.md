@@ -6,17 +6,22 @@ The scripts are a collection of command line tools for reading / writing single 
 _Disclaimer:_ Use of this material can possibly void your warranty, corrupt your presets or brick your controller.
 
 ## Downloads
-If you are not familiar with setting up a python environment 
+If you are not familiar with setting up a python environment you can download the MPK249 version for both Windows and Mac
 
 you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
-(sorry Apple users)
 
-### Pre-requisites for running the source code:
+NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0mac/MPK249_Visual_Editor.dmg).
+
+### Pre-requisites for running the GUI via source code:
+
+Intall python. On OSX install python via brew, as it contains the newest version of customtkinter library
+
 For the GUI:
 Install customtkinter (if not already installed) pillow and python-rtmidi
 ```sh
 pip install customtkinter pillow python-rtmidi
 ```
+
 Download Akai media images (for the gui)
 
 https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
@@ -99,12 +104,18 @@ Pitchebend / Modwheel
 
 #### Usage with other MPK2 series keyboards (untested)
 
-For midi support try to edit the port configurations in the mpk249_gui.py file
+For midi support edit the port configurations in the mpk249_gui.py file
 ```sh
 self.MIDI_IN_GET_NAME = "MIDIIN4 (MPK249)"
 self.MIDI_OUT_SEND_NAME = "MIDIOUT4 (MPK249)"
 ```
-with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" - "MIDIOUT4 (MPK261)" )
+with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" - "MIDIOUT4 (MPK261)" ) on windows
+
+On mac 
+```sh
+self.MIDI_IN_GET_NAME = "MPK249 Remote"  will become  "MPK261 Remote"
+self.MIDI_OUT_SEND_NAME = "MPK249 Remote" wil become "MPK249 Remote"
+```
 
 ## Command-line scripts usage
 The command line scripts are my first attempt to configure the keyboard. You don't need them if you are using the visual editor.
