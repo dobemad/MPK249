@@ -28,6 +28,8 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
 
 And extract MPK249_ortho_10x8_media_01.jpg
 
+On Mac you will have to crop and resize the image to 1058x635
+
 ### Works that made this possible:
 These guys are the real heroes:
 
@@ -43,17 +45,17 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts
 
 Place these 3 files in the same directory
 
-mpk249_gui.py
+mpk249_gui.py (download mpk249_gui_mac.py and rename it to mpk249_gui.py if you are on Mac)
 
 mpk2_preset.py
 
-Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg
+Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg (crop and resize the image if you are on Mac)
 
 
 Then run:
 
 ```sh
-python akai_gui.py
+python mpk249_gui.py
 ```
 to start the visual editor. 
 
@@ -114,7 +116,7 @@ with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK26
 On mac 
 ```sh
 self.MIDI_IN_GET_NAME = "MPK249 Remote"  will become  "MPK261 Remote"
-self.MIDI_OUT_SEND_NAME = "MPK249 Remote" wil become "MPK249 Remote"
+self.MIDI_OUT_SEND_NAME = "MPK249 Remote" wil become "MPK261 Remote"
 ```
 
 ## Command-line scripts usage
