@@ -14,10 +14,10 @@ NEW! you can download the OSx dmg from this repository [here](https://github.com
 
 ### Pre-requisites for running the GUI via source code:
 
-Intall python. On OSX install python via brew, as it contains the newest version of customtkinter library
+Intall python. OSX users: install python via brew, as it contains a working version of customtkinter library
 
-For the GUI:
-Install customtkinter (if not already installed) pillow and python-rtmidi
+Then install these dependencies:
+
 ```sh
 pip install customtkinter pillow python-rtmidi
 ```
@@ -28,7 +28,9 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
 
 And extract MPK249_ortho_10x8_media_01.jpg
 
-On Mac you will have to crop and resize the image to 1058x635
+NB: On Mac you will have to crop and resize the image to 1058x635
+
+
 
 ### Works that made this possible:
 These guys are the real heroes:
@@ -45,11 +47,11 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts
 
 Place these 3 files in the same directory
 
-mpk249_gui.py (download mpk249_gui_mac.py and rename it to mpk249_gui.py if you are on Mac)
+mpk249_gui.py (NB: download mpk249_gui_mac.py and rename it to mpk249_gui.py if you are on Mac)
 
 mpk2_preset.py
 
-Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg (crop and resize the image if you are on Mac)
+Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg (crop and resize the image to 1058x635 if you are on Mac)
 
 
 Then run:
