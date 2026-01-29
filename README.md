@@ -1,16 +1,20 @@
 # A visual editor for Akai MPK2 series + a collection of command line scripts
 Tested and reversed engineered on Akai MPK249. 
 Usage on other controllers of the MPK2 series is _untested_.
-The scripts are a collection of command line tools for reading / writing single preset dump files
+The /scripts are a collection of command line tools for reading / writing single preset dump files and are mostly for research purpose. 
+End user should use the gui only
 
 _Disclaimer:_ Use of this material can possibly void your warranty, corrupt your presets or brick your controller.
 
 ## Downloads
-If you are not familiar with setting up a python environment you can download the MPK249 version for both Windows and Mac
+
+If you are not familiar with setting up a python environment you can download the MPK249 version for both Windows and Mac. 
 
 you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
 
 NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0mac/MPK249_Visual_Editor.dmg).
+
+That's all you have to do to use the app hopefully. 
 
 ### Pre-requisites for running the GUI via source code:
 
@@ -29,7 +33,6 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
 And extract MPK249_ortho_10x8_media_01.jpg
 
 NB: On Mac you will have to ~~crop and resize the image to 1058x635~~ use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg) as it is.
-
 
 
 ### Works that made this possible:
@@ -77,7 +80,6 @@ You can also save presets to your computer.
 Done!
 
 
-
 #### The actual interface
 ![screenshot](https://github.com/dobemad/MPK249/blob/main/gui-interface.png)
 
@@ -107,6 +109,14 @@ Keyboard
 Pitchebend / Modwheel
 
 #### Usage with other MPK2 series keyboards (untested)
+
+The script is set to identify the keyboard from the sysex data. 
+
+```sh
+def get_model(self):
+        if not self.sysex_data or len(self.sysex_data) <= 3: return "N/A"
+        return {0x24:"MPK249", 0x25:"MPK261", 0x23:"MPK225"}.get(self.sysex_data[3], "Unknown")
+```
 
 For midi support edit the port configurations in the mpk249_gui.py file
 ```sh
