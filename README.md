@@ -12,7 +12,7 @@ If you are not familiar with setting up a python environment you can download th
 
 you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
 
-NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0mac/MPK249_Visual_Editor.dmg).
+NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/V1.1.0mac/MPK249_Visual_Editor.dmg).
 
 That's all you have to do to use the app hopefully. 
 
@@ -125,11 +125,9 @@ self.MIDI_OUT_SEND_NAME = "MIDIOUT4 (MPK249)"
 ```
 with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" - "MIDIOUT4 (MPK261)" ) on windows
 
-On mac 
-```sh
-self.MIDI_IN_GET_NAME = "MPK249 Remote"  will become  "MPK261 Remote"
-self.MIDI_OUT_SEND_NAME = "MPK249 Remote" wil become "MPK261 Remote"
-```
+On mac now should work out of the box with autofinding model and portname.
+
+
 
 ## Command-line scripts usage
 The command line scripts are my first attempt to configure the keyboard. You don't need them if you are using the visual editor.
