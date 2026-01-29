@@ -311,25 +311,86 @@ class App(ctk.CTk):
         # ... (tutto il contenuto di top_frame con .pack() va bene) ...
         ctk.CTkButton(top_frame, text="Load from File...", command=self.load_preset_from_file).pack(side="left", padx=5, pady=5)
         ctk.CTkButton(top_frame, text="Save to File...", command=self.save_preset_to_file).pack(side="left", padx=5, pady=5)
-        self.preset_label = ctk.CTkLabel(top_frame, text="No Preset Loaded", font=("Arial", 16)); self.preset_label.pack(side="left", padx=20, pady=5)
+        self.preset_label = ctk.CTkLabel(top_frame, text=f"'No preset' loaded from keyboard", font=("Arial", 14)); self.preset_label.pack(side="left", padx=20, pady=5)
         ctk.CTkButton(top_frame, text="Preset Info", command=self.edit_preset_info).pack(side="left", padx=5, pady=5)
         ctk.CTkButton(top_frame, text="Set Pads", command=self.open_pad_mapper).pack(side="left", padx=5, pady=5)
         ctk.CTkButton(top_frame, text="Set MIDI Chn", command=self.open_channel_mapper).pack(side="left", padx=5, pady=5) 
-        ctk.CTkButton(top_frame, text="Clone Bank", command=self.open_bank_cloner).pack(side="left", padx=5, pady=5)
+        #ctk.CTkButton(top_frame, text="Clone Bank", command=self.open_bank_cloner).pack(side="left", padx=5, pady=5)
 
         midi_frame = ctk.CTkFrame(self, height=50)
+        midi_frame.grid(row=1, column=0, sticky="ew", padx=10, pady=5) 
+
+        # --- INIZIO NUOVO BLOCCO MIDI CON GRIGLIA INTERNA ---
+
+        # Configura una griglia a 3 colonne dentro il midi_frame
+        # Colonna 0 (sinistra) e 2 (destra) si espandono per spingere la colonna centrale (1) al centro
+        midi_frame = ctk.CTkFrame(self, height=50)
         midi_frame.grid(row=1, column=0, sticky="ew", padx=10, pady=5)
-        # ... (tutto il contenuto di midi_frame con .pack() va bene) ...
+
+        # --- INIZIO BLOCCO SEMPLIFICATO E CORRETTO ---
+        
+        # Pulsanti a sinistra
+        self.get_button = ctk.CTkButton(midi_frame, text="Get from Keyboard", command=self.get_preset_from_keyboard)
+        self.get_button.pack(side="left", pady=5, padx=(0, 5))
+        self.send_button = ctk.CTkButton(midi_frame, text="Send to Keyboard", command=self.send_preset_to_keyboard)
+        self.send_button.pack(side="left", pady=5)
+
+        # Etichetta di stato e pulsante di annullamento a sinistra
+        self.midi_status_label = ctk.CTkLabel(midi_frame, text="Initializing MIDI...", text_color="gray")
+        self.midi_status_label.pack(side="left", padx=10, pady=5)
+        self.cancel_button = ctk.CTkButton(midi_frame, text="Cancel Listen", command=self.stop_midi_listener, fg_color="gray")
+        # Nota: .pack() del cancel_button è gestito dinamicamente quando serve
+
+        # Pulsante a sinistra
+        ctk.CTkButton(midi_frame, text="Clone Bank", command=self.open_bank_cloner).pack(side="left", padx=(100, 0), pady=5)
+
+    # --- FINE NUOVO BLOCCO MIDI ---
+
+        # Cerca le porte in background per non bloccare la GUI all'avvio
+        threading.Thread(target=self._find_midi_ports, daemon=True).start()
+# --- FINE DELLE MODIFICHE DENTRO __init__ ---
+
+# --- AGGIUNGI QUESTO NUOVO METODO ALLA CLASSE App ---
+# (alla stessa indentazione di __init__, place_background_image, ecc.)
+    def _find_midi_ports(self):
+        """Scans the system for valid MPK2xx MIDI ports and updates the GUI."""
         try:
-            midi_out_temp = rtmidi.MidiOut(); midi_in_temp = rtmidi.MidiIn()
-            self.out_ports = midi_out_temp.get_ports(); self.in_ports = midi_in_temp.get_ports()
-            self.MIDI_IN_GET_NAME = "MPK249 Remote"; self.MIDI_OUT_GET_NAME = "" 
-            self.MIDI_OUT_SEND_NAME = "MPK249 Remote"; self.MIDI_IN_SEND_NAME = ""
-            self.get_button = ctk.CTkButton(midi_frame, text="Get from Keyboard", command=self.get_preset_from_keyboard); self.get_button.pack(side="left", padx=5)
-            self.send_button = ctk.CTkButton(midi_frame, text="Send to Keyboard", command=self.send_preset_to_keyboard); self.send_button.pack(side="left", padx=5)
-            self.cancel_button = ctk.CTkButton(midi_frame, text="Cancel Listen", command=self.stop_midi_listener, fg_color="gray")
+            midi_in = rtmidi.MidiIn()
+            midi_out = rtmidi.MidiOut()
+            self.in_ports = midi_in.get_ports()
+            self.out_ports = midi_out.get_ports()
+            del midi_in, midi_out
+            
+            # Pattern di ricerca: deve contenere "MPK2" e una delle parole chiave
+            models = ["MPK225", "MPK249", "MPK261"]
+            keywords_in = ["Remote", "MIDIIN4"]
+            keywords_out = ["Remote", "MIDIOUT4"]
+
+            found_in_port = None
+            for port in self.in_ports:
+                if any(model in port for model in models) and any(kw in port for kw in keywords_in):
+                    found_in_port = port
+                    break # Trovata la prima porta valida, esci dal ciclo
+
+            found_out_port = None
+            for port in self.out_ports:
+                if any(model in port for model in models) and any(kw in port for kw in keywords_out):
+                    found_out_port = port
+                    break
+            
+            if found_in_port and found_out_port:
+                self.midi_in_name = found_in_port
+                self.midi_out_name = found_out_port
+                
+                # Aggiorna la GUI dal thread principale
+                self.after(0, lambda: self.midi_status_label.configure(text=f"Ready: {found_in_port}", text_color="green"))
+            else:
+                self.after(0, lambda: self.midi_status_label.configure(text="MPK Keyboard Not Found", text_color="orange"))
+                self.after(0, lambda: self.get_button.configure(state="disabled"))
+                self.after(0, lambda: self.send_button.configure(state="disabled"))
+        
         except Exception as e:
-            ctk.CTkLabel(midi_frame, text=f"Could not initialize MIDI: {e}", text_color="orange").pack(side="left", padx=5)
+            self.after(0, lambda: self.midi_status_label.configure(text=f"MIDI Error: {e}", text_color="red"))
 
         # --- Frame principale ---
         self.main_frame = ctk.CTkFrame(self, fg_color="transparent")
@@ -696,73 +757,13 @@ class App(ctk.CTk):
             midi_in.close_port()
             self.after(0, self.reset_get_button)
 
-    def get_preset_from_keyboard(self):
-        if self.is_listening:
-            print("Ascolto MIDI già attivo.")
-            return
-        try:
-            # Ricerca delle porte MIDI
-            out_idx = next((i for i, p in enumerate(self.out_ports) if self.MIDI_OUT_SEND_NAME in p), None)
-            in_idx = next((i for i, p in enumerate(self.in_ports) if self.MIDI_IN_GET_NAME in p), None)
-            
-            if in_idx is None:
-                messagebox.showerror("MIDI Error", f"Porta di INGRESSO '{self.MIDI_IN_GET_NAME}' non trovata.")
-                return
-            if out_idx is None:
-                messagebox.showerror("MIDI Error", f"Porta di USCITA '{self.MIDI_OUT_SEND_NAME}' non trovata per inviare la richiesta.")
-                return
-
-            print(f"Apertura porta di ingresso: '{self.in_ports[in_idx]}'")
-            midi_in = rtmidi.MidiIn()
-            midi_in.open_port(in_idx)
-            midi_in.ignore_types(sysex=False, timing=True, active_sense=True) # Ignoriamo il rumore di fondo
-
-            self.is_listening = True
-            threading.Thread(target=self.midi_listener_thread, args=(midi_in,), daemon=True).start()
-            
-            # Invia la richiesta di dump del preset
-            # NOTA: La richiesta di dump va inviata alla porta di USCITA, non di INGRESSO.
-            print(f"Apertura porta di uscita per richiesta: '{self.out_ports[out_idx]}'")
-            midi_out = rtmidi.MidiOut()
-            midi_out.open_port(out_idx)
-            # Questo è il messaggio SysEx standard per chiedere all'MPK249 di inviare il preset corrente
-            dump_request_message = [0xF0, 0x47, 0x00, 0x24, 0x31, 0x00, 0x01, 0x00, 0xF7]
-            midi_out.send_message(dump_request_message)
-            midi_out.close_port()
-            print("Richiesta di dump del preset inviata. In attesa di risposta...")
-            del midi_out # Pulizia
-
-            self.get_button.configure(state="disabled")
-            self.send_button.configure(state="disabled")
-            self.cancel_button.pack(side="left", padx=5)
-
-        except Exception as e:
-            messagebox.showerror("MIDI Error", f"Errore durante l'inizializzazione MIDI: {e}")
-            self.reset_get_button()
+    
 
     def load_preset_from_data(self, sysex_bytes):
         self.preset = MPK2Preset(data=sysex_bytes)
         self.update_preset_label(); self.update_hotspot_labels(); messagebox.showinfo("Success", f"Preset received ({len(sysex_bytes)} bytes).")
 
-    def get_preset_from_keyboard(self):
-        if self.is_listening: return
-        try:
-            out_idx = next((i for i, p in enumerate(self.out_ports) if self.MIDI_OUT_GET_NAME in p), None)
-            in_idx = next((i for i, p in enumerate(self.in_ports) if self.MIDI_IN_GET_NAME in p), None)
-            if out_idx is None or in_idx is None: messagebox.showerror("MIDI Error", "'Get' ports not found."); return
-            
-            midi_in = rtmidi.MidiIn(); midi_in.open_port(in_idx); midi_in.ignore_types(sysex=False)
-            self.is_listening = True
-            threading.Thread(target=self.midi_listener_thread, args=(midi_in,), daemon=True).start()
-            
-            midi_out = rtmidi.MidiOut(); midi_out.open_port(out_idx)
-            midi_out.send_message([0xF0, 0x47, 0x00, 0x24, 0x31, 0x00, 0x01, 0x00, 0xF7])
-            midi_out.close_port(); del midi_out
-            
-            self.get_button.configure(state="disabled"); self.send_button.configure(state="disabled")
-            self.cancel_button.pack(side="left", padx=5)
-        except Exception as e:
-            messagebox.showerror("MIDI Error", f"Error: {e}"); self.reset_get_button()
+    
 
     def stop_midi_listener(self):
         if self.is_listening: self.is_listening = False
@@ -771,16 +772,72 @@ class App(ctk.CTk):
         self.get_button.configure(state="normal"); self.send_button.configure(state="normal")
         self.cancel_button.pack_forget()
 
-    def send_preset_to_keyboard(self):
-        if not self.preset or not self.preset.sysex_data: messagebox.showerror("Error", "No preset to send."); return
+    # DENTRO LA CLASSE App
+
+    def get_preset_from_keyboard(self):
+        if self.is_listening:
+            print("Ascolto MIDI già attivo.")
+            return
+        
+        if not self.midi_in_name or not self.midi_out_name:
+            messagebox.showerror("MIDI Error", "MPK keyboard not found. Please connect it and restart the app.")
+            return
+
         try:
-            out_idx = next((i for i, p in enumerate(self.out_ports) if self.MIDI_OUT_SEND_NAME in p), None)
-            if out_idx is None: messagebox.showerror("MIDI Error", f"Port '{self.MIDI_OUT_SEND_NAME}' not found."); return
-            midi_out = rtmidi.MidiOut(); midi_out.open_port(out_idx)
+            # Usa i nomi trovati dinamicamente
+            in_idx = self.in_ports.index(self.midi_in_name)
+            out_idx = self.out_ports.index(self.midi_out_name)
+            
+            print(f"Apertura porta di ingresso: '{self.in_ports[in_idx]}'")
+            midi_in = rtmidi.MidiIn()
+            midi_in.open_port(in_idx)
+            midi_in.ignore_types(sysex=False, timing=True, active_sense=True)
+
+            self.is_listening = True
+            threading.Thread(target=self.midi_listener_thread, args=(midi_in,), daemon=True).start()
+            
+            print(f"Apertura porta di uscita per richiesta: '{self.out_ports[out_idx]}'")
+            midi_out = rtmidi.MidiOut()
+            midi_out.open_port(out_idx)
+            dump_request_message = [0xF0, 0x47, 0x00, 0x24, 0x31, 0x00, 0x01, 0x00, 0xF7]
+            midi_out.send_message(dump_request_message)
+            midi_out.close_port()
+            print("Richiesta di dump del preset inviata. In attesa di risposta...")
+            del midi_out
+
+            self.get_button.configure(state="disabled")
+            self.send_button.configure(state="disabled")
+            self.cancel_button.pack(side="left", padx=5)
+
+        except (ValueError, IndexError):
+             messagebox.showerror("MIDI Error", "The MIDI ports seem to have changed. Please restart the app.")
+        except Exception as e:
+            messagebox.showerror("MIDI Error", f"Errore durante l'inizializzazione MIDI: {e}")
+            self.reset_get_button()
+
+    def send_preset_to_keyboard(self):
+        if not self.preset or not self.preset.sysex_data:
+            messagebox.showerror("Error", "No preset to send.")
+            return
+            
+        if not self.midi_out_name:
+            messagebox.showerror("MIDI Error", "MPK keyboard not found. Please connect it and restart the app.")
+            return
+
+        try:
+            # Usa il nome trovato dinamicamente
+            out_idx = self.out_ports.index(self.midi_out_name)
+            
+            midi_out = rtmidi.MidiOut()
+            midi_out.open_port(out_idx)
             midi_out.send_message(list(self.preset.sysex_data))
-            midi_out.close_port(); del midi_out
+            midi_out.close_port()
+            del midi_out
             messagebox.showinfo("Success", f"Preset sent to {self.out_ports[out_idx]}")
-        except Exception as e: messagebox.showerror("MIDI Error", f"Send error: {e}")
+        except (ValueError, IndexError):
+             messagebox.showerror("MIDI Error", "The MIDI ports seem to have changed. Please restart the app.")
+        except Exception as e:
+            messagebox.showerror("MIDI Error", f"Send error: {e}")
 
     def on_closing(self):
         self.is_listening = False; time.sleep(0.05); self.destroy()
