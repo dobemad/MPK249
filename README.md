@@ -14,9 +14,53 @@ you can download the Windows executable from this repository [here](https://gith
 
 NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/V1.1.0mac/MPK249_Visual_Editor.dmg).
 
-That's all you have to do to use the app hopefully. 
+That's all you have to do to use the app hopefully.
 
-### Pre-requisites for running the GUI via source code:
+### Usage
+
+To load a preset click 'Get Presets from Keyboard'
+
+Go to your midi keyboad global settings --> Sysex --> Send program
+
+Pick the preset number you want to edit (do not use the 'All' option)
+and push the enter knob to send the preset sysex dump to the editor.
+
+Make your changes and then click the 'Send to Keyboard' button.
+
+You can also save presets to your computer.
+
+Done!
+
+
+#### The actual interface
+![screenshot](https://github.com/dobemad/MPK249/blob/main/gui-interface.png)
+
+#### Features:
+Get Presets from Keyboard
+
+Send Presets to Keyboard
+
+Save and load from files
+
+Set all parameters for pads
+
+Set all parameters for knobs
+
+Set all parameters for faders
+
+Set all parameters for switches
+
+Set all parameters for the 4 daw buttons
+
+Bulk functions (midi channels, note settings, etc.)
+
+#### Missing:
+Transport 
+Arpeggiator
+Keyboard
+Pitchebend / Modwheel
+
+### Pre-requisites for running the GUI (only if using source code)
 
 Intall python. OSX users: install python via brew, as it contains a working version of customtkinter library
 
@@ -64,49 +108,7 @@ python mpk249_gui.py
 ```
 to start the visual editor. 
 
-### Usage
 
-To load a preset click 'Get Presets from Keyboard'
-
-Go to your keyboad global settings --> Sysex --> Send program
-
-Pick the preset number you want to edit (do not use the 'All' option)
-and push the enter knob to send the preset sysex dump to the editor.
-
-Make your changes and then click the 'Send to Keyboard' button.
-
-You can also save presets to your computer.
-
-Done!
-
-
-#### The actual interface
-![screenshot](https://github.com/dobemad/MPK249/blob/main/gui-interface.png)
-
-#### Features:
-Get Presets from Keyboard
-
-Send Presets to Keyboard
-
-Save and load from files
-
-Set all parameters for pads
-
-Set all parameters for knobs
-
-Set all parameters for faders
-
-Set all parameters for switches
-
-Set all parameters for the 4 daw buttons
-
-Bulk functions (midi channels, note settings, etc.)
-
-#### Missing:
-Transport 
-Arpeggiator
-Keyboard
-Pitchebend / Modwheel
 
 #### Usage with other MPK2 series keyboards (untested)
 
