@@ -28,7 +28,7 @@ https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK249%20-%20Media.zip
 
 And extract MPK249_ortho_10x8_media_01.jpg
 
-NB: On Mac you will have to (~~)crop and resize the image to 1058x635(~~) use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg)
+NB: On Mac you will have to ~~crop and resize the image to 1058x635~~ use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg) as it is.
 
 
 
@@ -51,8 +51,8 @@ mpk249_gui.py (NB: download mpk249_gui_mac.py and rename it to mpk249_gui.py if 
 
 mpk2_preset.py
 
-Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg (~~)(crop and resize the image to 1058x635 if you are on Mac)(~~)
-ON MAC only use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg)
+Renamed MPK249_ortho_10x8_media_01.jpg from the Akai media package to keyboard.jpg ~~(crop and resize the image to 1058x635 if you are on Mac)~~
+MAC USERS: use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg) as it is
 
 Then run:
 
