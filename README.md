@@ -16,6 +16,12 @@ NEW! you can download the OSx dmg from this repository [here](https://github.com
 
 That's all you have to do to use the app hopefully. Latest version of Windows executable adds support to other MPK2 controllers / midi ports
 
+### Know Bugs
+
+When using the Preset Info button to change the name and the preset number, the number you type in are 0-29 intead of 1-30.
+
+So remember to add +1 to your desired preset if you are using this functionality
+
 ### Usage
 
 Plug your keyboard before launching the program.
