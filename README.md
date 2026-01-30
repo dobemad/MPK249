@@ -10,24 +10,28 @@ _Disclaimer:_ Use of this material can possibly void your warranty, corrupt your
 
 If you are not familiar with setting up a python environment you can download the MPK249 version for both Windows and Mac. 
 
-you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.0.0/mpk249_gui.exe).
+you can download the Windows executable from this repository [here](https://github.com/dobemad/MPK249/releases/download/v1.1.0/mpk249_v1.1.exe).
 
 NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/V1.1.0mac/MPK249_Visual_Editor.dmg).
 
-That's all you have to do to use the app hopefully.
+That's all you have to do to use the app hopefully. Latest version of Windows executable adds support to other MPK2 controllers / midi ports
 
 ### Usage
 
-To load a preset click 'Get Presets from Keyboard'
+Plug your keyboard before launching the program.
+
+To load a preset directly from the keyboard click 'Get Presets from Keyboard'
 
 Go to your midi keyboad global settings --> Sysex --> Send program
 
 Pick the preset number you want to edit (do not use the 'All' option)
 and push the enter knob to send the preset sysex dump to the editor.
 
-Make your changes and then click the 'Send to Keyboard' button.
+Make your changes. Make sure to save them, then click the 'Send to Keyboard' button.
 
-You can also save presets to your computer.
+Reload your preset on the keyboard to see the actual changes
+
+You can also load/save presets to your computer.
 
 Done!
 
