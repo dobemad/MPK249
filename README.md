@@ -14,10 +14,10 @@ you can download the Windows executable from this repository [here](https://gith
 
 NEW! you can download the OSx dmg from this repository [here](https://github.com/dobemad/MPK249/releases/download/V1.1.0mac/MPK249_Visual_Editor.dmg).
 
-If you Mac is blocking you (cause the dmg has not been downloaded from app store, click on the Apple logo
-(top left), System settings, Privacy and Security, scroll down to the security section and click on "open" next to the security warning (This mac has prevented mpk249_gui from running)
+If your Mac is blocking the app with a security warning, click on the Apple logo
+(top left), System settings, Privacy and Security, scroll down to the security section and click on "open" next to the security warning (This mac has prevented mpk249_gui from running).
 
-That's all you have to do to use the app hopefully. Latest version of Windows executable adds support to other MPK2 controllers / midi ports
+That's all you have to do to run the app hopefully. Latest version of Windows executable adds support to other MPK2 controllers / midi ports
 
 ### Know Bugs
 
