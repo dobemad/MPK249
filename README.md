@@ -92,17 +92,6 @@ And extract MPK249_ortho_10x8_media_01.jpg
 NB: On Mac you will have to ~~crop and resize the image to 1058x635~~ use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg) as it is.
 
 
-### Works that made this possible:
-These guys are the real heroes:
-
-https://github.com/nsmith-/mpk2
-
-http://practicalusage.com/akai-mpk261-mpk2-series-controlling-the-controller-with-sysex/
-
-http://practicalusage.com/akai-mpk261-one-more-thing/
-
-https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
-
 ## Running the GUI in python
 
 Place these 3 files in the same directory
@@ -142,7 +131,16 @@ with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK26
 
 On mac now should work out of the box with autofinding model and portname.
 
+### Works that made this possible:
+These guys are the real heroes:
 
+https://github.com/nsmith-/mpk2
+
+http://practicalusage.com/akai-mpk261-mpk2-series-controlling-the-controller-with-sysex/
+
+http://practicalusage.com/akai-mpk261-one-more-thing/
+
+https://cdn.inmusicbrands.com/akai/attachments/MPK249/MPK2_Series_Bitwig_Scripts_v1.0.8.zip
 
 ## Command-line scripts usage
 The command line scripts are my first attempt to configure the keyboard. You don't need them if you are using the visual editor.
