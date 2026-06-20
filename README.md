@@ -19,7 +19,7 @@ If your Mac is blocking the app with a security warning, click on the Apple logo
 
 That's all you have to do to run the app hopefully. Latest version of Windows executable adds support to other MPK2 controllers / midi ports
 
-## Know Bugs
+## Known Bugs
 
 When using the Preset Info button to change the name and the preset number, the number you type in are 0-29 intead of 1-30.
 
