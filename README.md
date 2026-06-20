@@ -6,7 +6,7 @@ End user should use the gui only
 
 _Disclaimer:_ Use of this material can possibly void your warranty, corrupt your presets or brick your controller.
 
-## Downloads
+## GUI Download & Install
 
 If you are not familiar with setting up a python environment you can download the MPK249 version for both Windows and Mac. 
 
@@ -19,13 +19,13 @@ If your Mac is blocking the app with a security warning, click on the Apple logo
 
 That's all you have to do to run the app hopefully. Latest version of Windows executable adds support to other MPK2 controllers / midi ports
 
-### Know Bugs
+## Know Bugs
 
 When using the Preset Info button to change the name and the preset number, the number you type in are 0-29 intead of 1-30.
 
 So remember to add +1 to your desired preset if you are using this functionality
 
-### Usage
+## GUI Usage
 
 Plug your keyboard before launching the program.
 
@@ -45,10 +45,10 @@ You can also load/save presets to your computer.
 Done!
 
 
-#### The actual interface
+### The actual interface
 ![screenshot](https://github.com/dobemad/MPK249/blob/main/gui-interface.png)
 
-#### Features:
+### Features:
 Get Presets from Keyboard
 
 Send Presets to Keyboard
@@ -67,15 +67,19 @@ Set all parameters for the 4 daw buttons
 
 Bulk functions (midi channels, note settings, etc.)
 
-#### Missing:
+### Missing:
 Transport 
 Arpeggiator
 Keyboard
 Pitchebend / Modwheel
 
-### Pre-requisites for running the GUI (only if using source code)
 
-Intall python. OSX users: install python via brew, as it contains a working version of customtkinter library
+## Running the source code in your own python environment
+
+### Pre-requisites: 
+
+If you prefer running the source code in your python environment, Intall python. 
+Note for OSX users: install python via brew, as it contains a working version of the customtkinter library
 
 Then install these dependencies:
 
@@ -91,8 +95,7 @@ And extract MPK249_ortho_10x8_media_01.jpg
 
 NB: On Mac you will have to ~~crop and resize the image to 1058x635~~ use [this file](https://github.com/dobemad/MPK249/blob/main/keyboard.jpg) as it is.
 
-
-## Running the GUI in python
+### Running the source code for the GUI in yuor python environment
 
 Place these 3 files in the same directory
 
@@ -111,8 +114,7 @@ python mpk249_gui.py
 to start the visual editor. 
 
 
-
-#### Usage with other MPK2 series keyboards (untested)
+## Usage with other MPK2 series keyboards (untested)
 
 The script is set to identify the keyboard from the sysex data. 
 
@@ -129,7 +131,7 @@ self.MIDI_OUT_SEND_NAME = "MIDIOUT4 (MPK249)"
 ```
 with your actual midi port names for sysex communications. (e.g. "MIDIIN4 (MPK261)" - "MIDIOUT4 (MPK261)" ) on windows
 
-On mac now should work out of the box with autofinding model and portname.
+On the mac version of the GUI, this should work out of the box, with autofinding model and portname, so there is non need to change the script.
 
 ### Works that made this possible:
 These guys are the real heroes:
