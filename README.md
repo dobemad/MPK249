@@ -75,10 +75,11 @@ Pitchebend / Modwheel
 
 
 ## Running the source code in your own python environment
+If you prefer running the GUI source code in your python environment, instead of using the executables above.
 
 ### Pre-requisites: 
 
-If you prefer running the source code in your python environment, Intall python. 
+Install python. 
 Note for OSX users: install python via brew, as it contains a working version of the customtkinter library
 
 Then install these dependencies:
